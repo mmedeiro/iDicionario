@@ -136,12 +136,12 @@
 		27156F5318B76AF50053A99C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4BDB64971AB7A20C00D4CDE1 /* LetraAViewController.h */,
-				4BDB64981AB7A20C00D4CDE1 /* LetraAViewController.m */,
 				27156F5418B76AF50053A99C /* Navigation-Info.plist */,
 				27156F5518B76AF50053A99C /* InfoPlist.strings */,
 				27156F5818B76AF50053A99C /* main.m */,
 				27156F5A18B76AF50053A99C /* Navigation-Prefix.pch */,
+				4BDB64971AB7A20C00D4CDE1 /* LetraAViewController.h */,
+				4BDB64981AB7A20C00D4CDE1 /* LetraAViewController.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

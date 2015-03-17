@@ -11,9 +11,7 @@
 
 @interface DicionarioViewController (){
     Dicionario *d;
-    int cont;
-    UILabel *labelPalavras;
-    UIImageView *img;
+    
    
     
 }
@@ -24,14 +22,14 @@
 
 @implementation DicionarioViewController
 
-
+@synthesize labelPalavras, cont, img;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     d = [[Dicionario alloc]init];
     [d dict];
     
-    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     //next
     UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(next:)];
     self.navigationItem.rightBarButtonItem=next;
@@ -68,22 +66,34 @@
     UIImage *temp = [UIImage imageNamed:[d seeImagem:cont]];
     img.image = temp;
 }
-
--(void)viewWillAppear:(BOOL)animated{
-
-//    self.title = [d seeTitle:cont];
-//    labelPalavras.text = [d seePalavra:cont];
-//    UIImage *temp = [UIImage imageNamed:[d seeImagem:cont]];
-//    img.image = temp;
-    
-}
+//
+//-(void)viewWillAppear:(BOOL)animated{
+//
+////    self.title = [d seeTitle:cont];
+////    labelPalavras.text = [d seePalavra:cont];
+////    UIImage *temp = [UIImage imageNamed:[d seeImagem:cont]];
+////    img.image = temp;
+//    
+//}
 
 -(void)next:(id)sender {
-    cont ++;
-//    self.navigationItem.title = [d seeTitle: cont];
-//    labelPalavras.text = [d seePalavra:cont];
-//    img.image = [d seeImagem:cont];
-    [self carregarDados];
+    //cont ++;
+    
+    DicionarioViewController *newViewContreller = [[DicionarioViewController alloc]init];
+    [self.navigationController pushViewController:newViewContreller animated:YES];
+    
+    NSMutableArray *vct = [NSMutableArray arrayWithArray:[self.navigationController childViewControllers]];
+    [vct removeObject:self];
+    [self.navigationController setViewControllers: vct];
+    
+    newViewContreller.cont = cont +1;
+    
+    self.navigationItem.title = [d seeTitle: cont];
+    newViewContreller.labelPalavras.text = [d seePalavra:cont];
+    newViewContreller.img.image = [d seeImagem:cont];
+   
+    
+    //[self carregarDados] ;
   
     
     
