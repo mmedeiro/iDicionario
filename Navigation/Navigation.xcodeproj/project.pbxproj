@@ -19,8 +19,10 @@
 		27156F6818B76AF50053A99C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27156F5018B76AF50053A99C /* UIKit.framework */; };
 		27156F7018B76AF50053A99C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27156F6E18B76AF50053A99C /* InfoPlist.strings */; };
 		27156F7218B76AF50053A99C /* NavigationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27156F7118B76AF50053A99C /* NavigationTests.m */; };
-		27156F7D18BA89430053A99C /* LetraAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27156F7C18BA89430053A99C /* LetraAViewController.m */; };
 		27156F8018BA8B210053A99C /* LetraBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27156F7F18BA8B210053A99C /* LetraBViewController.m */; };
+		4BDB64931AB74BD200D4CDE1 /* DicionarioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDB64921AB74BD200D4CDE1 /* DicionarioViewController.m */; };
+		4BDB64961AB759D600D4CDE1 /* Dicionario.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDB64951AB759D600D4CDE1 /* Dicionario.m */; };
+		4BDB64991AB7A20C00D4CDE1 /* LetraAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDB64981AB7A20C00D4CDE1 /* LetraAViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,10 +52,14 @@
 		27156F6D18B76AF50053A99C /* NavigationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NavigationTests-Info.plist"; sourceTree = "<group>"; };
 		27156F6F18B76AF50053A99C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27156F7118B76AF50053A99C /* NavigationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationTests.m; sourceTree = "<group>"; };
-		27156F7B18BA89430053A99C /* LetraAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetraAViewController.h; sourceTree = "<group>"; };
-		27156F7C18BA89430053A99C /* LetraAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetraAViewController.m; sourceTree = "<group>"; };
 		27156F7E18BA8B210053A99C /* LetraBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LetraBViewController.h; sourceTree = "<group>"; };
 		27156F7F18BA8B210053A99C /* LetraBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LetraBViewController.m; sourceTree = "<group>"; };
+		4BDB64911AB74BD200D4CDE1 /* DicionarioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DicionarioViewController.h; sourceTree = "<group>"; };
+		4BDB64921AB74BD200D4CDE1 /* DicionarioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DicionarioViewController.m; sourceTree = "<group>"; };
+		4BDB64941AB759D600D4CDE1 /* Dicionario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dicionario.h; sourceTree = "<group>"; };
+		4BDB64951AB759D600D4CDE1 /* Dicionario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dicionario.m; sourceTree = "<group>"; };
+		4BDB64971AB7A20C00D4CDE1 /* LetraAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LetraAViewController.h; path = ../../../../.Trash/LetraAViewController.h; sourceTree = "<group>"; };
+		4BDB64981AB7A20C00D4CDE1 /* LetraAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LetraAViewController.m; path = ../../../../.Trash/LetraAViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,8 @@
 		27156F4018B76AF50053A99C = {
 			isa = PBXGroup;
 			children = (
+				4BDB64941AB759D600D4CDE1 /* Dicionario.h */,
+				4BDB64951AB759D600D4CDE1 /* Dicionario.m */,
 				27156F5218B76AF50053A99C /* Navigation */,
 				27156F6B18B76AF50053A99C /* NavigationTests */,
 				27156F4B18B76AF50053A99C /* Frameworks */,
@@ -113,14 +121,14 @@
 		27156F5218B76AF50053A99C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				27156F5E18B76AF50053A99C /* Images.xcassets */,
 				27156F5B18B76AF50053A99C /* MackenzieAppDelegate.h */,
 				27156F5C18B76AF50053A99C /* MackenzieAppDelegate.m */,
-				27156F5E18B76AF50053A99C /* Images.xcassets */,
 				27156F5318B76AF50053A99C /* Supporting Files */,
-				27156F7B18BA89430053A99C /* LetraAViewController.h */,
-				27156F7C18BA89430053A99C /* LetraAViewController.m */,
 				27156F7E18BA8B210053A99C /* LetraBViewController.h */,
 				27156F7F18BA8B210053A99C /* LetraBViewController.m */,
+				4BDB64911AB74BD200D4CDE1 /* DicionarioViewController.h */,
+				4BDB64921AB74BD200D4CDE1 /* DicionarioViewController.m */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -128,6 +136,8 @@
 		27156F5318B76AF50053A99C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4BDB64971AB7A20C00D4CDE1 /* LetraAViewController.h */,
+				4BDB64981AB7A20C00D4CDE1 /* LetraAViewController.m */,
 				27156F5418B76AF50053A99C /* Navigation-Info.plist */,
 				27156F5518B76AF50053A99C /* InfoPlist.strings */,
 				27156F5818B76AF50053A99C /* main.m */,
@@ -251,7 +261,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				27156F5D18B76AF50053A99C /* MackenzieAppDelegate.m in Sources */,
-				27156F7D18BA89430053A99C /* LetraAViewController.m in Sources */,
+				4BDB64991AB7A20C00D4CDE1 /* LetraAViewController.m in Sources */,
+				4BDB64931AB74BD200D4CDE1 /* DicionarioViewController.m in Sources */,
+				4BDB64961AB759D600D4CDE1 /* Dicionario.m in Sources */,
 				27156F8018BA8B210053A99C /* LetraBViewController.m in Sources */,
 				27156F5918B76AF50053A99C /* main.m in Sources */,
 			);
@@ -454,6 +466,7 @@
 				27156F7718B76AF50053A99C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27156F7818B76AF50053A99C /* Build configuration list for PBXNativeTarget "NavigationTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +475,7 @@
 				27156F7A18B76AF50053A99C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
