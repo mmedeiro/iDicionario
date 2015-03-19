@@ -9,24 +9,32 @@
 #import "MackenzieAppDelegate.h"
 #import "LetraAViewController.h"
 #import "DicionarioViewController.h"
+#import "Dicionario.h"
+#import "TableViewController.h"
 
 @implementation MackenzieAppDelegate
 //
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    DicionarioViewController *viewController = [[DicionarioViewController alloc]
-                                           initWithNibName:nil
-                                           bundle:nil];
+    DicionarioViewController *viewController = [[DicionarioViewController alloc]initWithNibName:nil bundle:nil];
+    
+    TableViewController *tableView = [[TableViewController alloc]init];
     
     UITabBarController *tabBarController = [[UITabBarController alloc]init];
-   // NSArray *vcts = [[NSArray arrayWithObjects:viewController, nil]];
-    [tabBarController setViewControllers:viewController];
-    [[self window] setRootViewController:tabBarController];
-    
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+   
+  
+    NSArray *vcts = [[NSArray alloc]initWithObjects:self.navigationController,tableView, nil];
+    [tabBarController setViewControllers:vcts];
+    
+    
+//    [[self window] setRootViewController:tabBarController];
+    
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.navigationController;
+    self.window.rootViewController = tabBarController;
 
 
     
