@@ -11,14 +11,10 @@
 
 @interface DicionarioViewController (){
     Dicionario *d;
-    
-   
-    
 }
 
-
-
 @end
+
 
 @implementation DicionarioViewController
 
@@ -29,7 +25,9 @@
     d = [[Dicionario alloc]init];
     [d dict];
     
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    
     //next
     UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(next:)];
     self.navigationItem.rightBarButtonItem=next;
@@ -46,24 +44,34 @@
     
     [self carregarDados];
     
+    labelPalavras.enabled = NO;
+    
     CGRect novoFrame = CGRectMake(176.0, 258.0, 72.0, 96.0);
     [UIView animateWithDuration:2.0 animations:^ {
-        self.view.alpha = 1.0;
-        self.view.frame = novoFrame;
+        self.img.alpha = 1.0;
+        self.img.frame = novoFrame;
 //                   self.view.transform = CGAffineTransformMakeRotation(M_PI);
 //         
          self.view.transform = CGAffineTransformMakeTranslation(50, 50);
     }
      ];
- 
     
+    UIToolbar *toolbarDict = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 480, self.view.bounds.size.width, 30)];
+    [self.view addSubview:toolbarDict];
+    
+    UIBarButtonItem *buttonToolbar = [[UIBarButtonItem alloc]initWithTitle:@"Editar" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    NSArray *itenstAB = [[NSArray alloc ]initWithObjects:space, buttonToolbar, space, nil];
+    [toolbarDict setItems:itenstAB];
 }
+
+
 
 - (void)carregarDados {
     self.navigationItem.title = [d seeTitle:cont];
     
     if (!labelPalavras) {
-        labelPalavras = [[UILabel alloc]initWithFrame:CGRectMake(120, 450, 170, 25)];
+        labelPalavras = [[UITextField alloc]initWithFrame:CGRectMake(120, 65, 170, 25)];
         [self.view addSubview:labelPalavras];
     }
     labelPalavras.text = [d seePalavra:cont];
@@ -75,6 +83,17 @@
     
     UIImage *temp = [UIImage imageNamed:[d seeImagem:cont]];
     img.image = temp;
+}
+
+-(void) edit: (id) sender {
+    
+    labelPalavras.enabled = YES;
+//    labelPalavras.backgroundColor = [UIColor grayColor];
+//    labelPalavras.backgroundColor = [UIColor clearColor];
+    
+ 
+    
+    
 }
 //
 //-(void)viewWillAppear:(BOOL)animated{
@@ -102,21 +121,7 @@
     self.navigationItem.title = [d seeTitle: cont];
     newViewContreller.labelPalavras.text = [d seePalavra:cont];
     newViewContreller.img.image = [d seeImagem:cont];
-    
- // [newViewContreller rel]
-    
-    //[self carregarDados] ;
-    
-//    
-//    UIImageView *animationView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,320, 460)];
-//    animationView.backgroundColor=[UIColor purpleColor];
-//    animationView.animationImages=_vetImagens;
-//    animationView.animationDuration=1.5;
-//    animationView.animationRepeatCount=0;
-//    [animationView startAnimating];
-//    [self.view addSubview:animationView];
-   // [animationView release];
- // [img an]
+
     [img setAnimationDuration:2.0];
     
 }

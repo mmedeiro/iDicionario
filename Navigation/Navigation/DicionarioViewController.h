@@ -11,7 +11,7 @@
 @interface DicionarioViewController : UIViewController
 
 
-@property  UILabel *labelPalavras;
+@property UITextField *labelPalavras;
 @property int cont;
 @property UIImageView *img;
 @property UIImageView *animated;
