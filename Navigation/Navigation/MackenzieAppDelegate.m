@@ -29,8 +29,6 @@
     [tabBarController setViewControllers:vcts];
     
     
-//    [[self window] setRootViewController:tabBarController];
-    
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -40,6 +38,9 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [viewController setTitle:@"Dicionario"];
+    [tableView setTitle:@"Tabela"];
     
     return YES;
 }

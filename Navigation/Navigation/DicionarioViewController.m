@@ -47,21 +47,20 @@
     [self carregarDados];
     
     CGRect novoFrame = CGRectMake(176.0, 258.0, 72.0, 96.0);
-    [UIView animateWithDuration:2.0
-          animations:^ {
-                   self.view.alpha = 1.0;
-                   self.view.frame = novoFrame;
+    [UIView animateWithDuration:2.0 animations:^ {
+        self.view.alpha = 1.0;
+        self.view.frame = novoFrame;
 //                   self.view.transform = CGAffineTransformMakeRotation(M_PI);
 //         
          self.view.transform = CGAffineTransformMakeTranslation(50, 50);
-              }
+    }
      ];
  
     
 }
 
 - (void)carregarDados {
-    self.title = [d seeTitle:cont];
+    self.navigationItem.title = [d seeTitle:cont];
     
     if (!labelPalavras) {
         labelPalavras = [[UILabel alloc]initWithFrame:CGRectMake(120, 450, 170, 25)];
@@ -142,6 +141,18 @@
 
   //  [self carregarDados];
 }
+//
+//-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+//    self =[super initWithNibName:nil bundle:nil];
+//    
+//    if (self) {
+//        UITabBarItem *tabBarIt = [self tabBarItem];
+//        
+//        [tabBarIt setTitle:@"Dicionario"];
+//    }
+//    
+//    return self;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

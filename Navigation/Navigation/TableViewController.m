@@ -7,8 +7,15 @@
 //
 
 #import "TableViewController.h"
+#import "Dicionario.h"
 
 @interface TableViewController ()
+
+
+{
+    Dicionario *dc;
+}
+
 
 @end
 
@@ -17,12 +24,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    dc = [[Dicionario alloc]init];
+    [dc dict];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+//-(id) initWithNibName:(NSString *)nibName bundle:(NSBundle *)Bundle {
+//    self = [self initWithNibName:nil bundle:nil];
+//    
+//    if (self) {
+//        UITabBarItem *tabBarIt = [self tabBarItem];
+//        
+//        [tabBarIt setTitle:@"Lista"];
+//    }
+//    return self;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,24 +55,27 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 26;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+   // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
-    
-    return cell;
+    UITableViewCell *cellDict = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"celula"];
+    long row = [indexPath row];
+    [cellDict.textLabel setText:[dc seeTitle:(int)row] ];
+    [cellDict.detailTextLabel setText:[dc seePalavra:(int)row]];
+ 
+    return cellDict;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
