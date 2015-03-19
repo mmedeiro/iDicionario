@@ -18,11 +18,14 @@
                                            initWithNibName:nil
                                            bundle:nil];
     
+    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+   // NSArray *vcts = [[NSArray arrayWithObjects:viewController, nil]];
+    [tabBarController setViewControllers:viewController];
+    [[self window] setRootViewController:tabBarController];
     
-    self.navigationController = [[UINavigationController alloc]
-                                 initWithRootViewController:viewController];
-    self.window = [[UIWindow alloc]
-                   initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
 
 

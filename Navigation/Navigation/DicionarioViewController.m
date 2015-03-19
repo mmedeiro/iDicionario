@@ -22,7 +22,7 @@
 
 @implementation DicionarioViewController
 
-@synthesize labelPalavras, cont, img;
+@synthesize labelPalavras, cont, img, animated;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +45,17 @@
     
     
     [self carregarDados];
+    
+    CGRect novoFrame = CGRectMake(176.0, 258.0, 72.0, 96.0);
+    [UIView animateWithDuration:2.0
+          animations:^ {
+                   self.view.alpha = 1.0;
+                   self.view.frame = novoFrame;
+//                   self.view.transform = CGAffineTransformMakeRotation(M_PI);
+//         
+         self.view.transform = CGAffineTransformMakeTranslation(50, 50);
+              }
+     ];
  
     
 }
@@ -81,6 +92,7 @@
     
     DicionarioViewController *newViewContreller = [[DicionarioViewController alloc]init];
     [self.navigationController pushViewController:newViewContreller animated:YES];
+  //  [newViewContreller release];
     
     NSMutableArray *vct = [NSMutableArray arrayWithArray:[self.navigationController childViewControllers]];
     [vct removeObject:self];
@@ -91,21 +103,44 @@
     self.navigationItem.title = [d seeTitle: cont];
     newViewContreller.labelPalavras.text = [d seePalavra:cont];
     newViewContreller.img.image = [d seeImagem:cont];
-   
+    
+ // [newViewContreller rel]
     
     //[self carregarDados] ;
-  
     
+//    
+//    UIImageView *animationView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,320, 460)];
+//    animationView.backgroundColor=[UIColor purpleColor];
+//    animationView.animationImages=_vetImagens;
+//    animationView.animationDuration=1.5;
+//    animationView.animationRepeatCount=0;
+//    [animationView startAnimating];
+//    [self.view addSubview:animationView];
+   // [animationView release];
+ // [img an]
+    [img setAnimationDuration:2.0];
     
 }
 
 -(void)back:(id)sender{
-    cont --;
-//    self.navigationItem.title = [d seeTitle: cont];
-//    labelPalavras.text = [d seePalavra:cont];
-//    img.image = [d seeImagem:cont];
+   // cont --;
+    
+    DicionarioViewController *newViewContreller = [[DicionarioViewController alloc]init];
+    [self.navigationController pushViewController:newViewContreller animated:YES];
+ 
+    
+    NSMutableArray *vct = [NSMutableArray arrayWithArray:[self.navigationController childViewControllers]];
+    [vct removeObject:self];
+    [self.navigationController setViewControllers: vct];
+    
+    newViewContreller.cont = cont -1;
+    
+    self.navigationItem.title = [d seeTitle: cont];
+    newViewContreller.labelPalavras.text = [d seePalavra:cont];
+    newViewContreller.img.image = [d seeImagem:cont];
 
-    [self carregarDados];
+
+  //  [self carregarDados];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -14,6 +14,7 @@
 @property  UILabel *labelPalavras;
 @property int cont;
 @property UIImageView *img;
+@property UIImageView *animated;
 
 
 
