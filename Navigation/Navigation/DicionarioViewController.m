@@ -25,10 +25,10 @@
     d = [[Dicionario alloc]init];
     [d dict];
     
-    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     //next
+    
     UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(next:)];
     self.navigationItem.rightBarButtonItem=next;
     UIButton *botao = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -38,6 +38,7 @@
     
     
     //back
+    
     UIBarButtonItem *back = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(back:)];
     self.navigationItem.leftBarButtonItem=back;
     
@@ -47,22 +48,43 @@
     labelPalavras.enabled = NO;
     
     CGRect novoFrame = CGRectMake(176.0, 258.0, 72.0, 96.0);
-    [UIView animateWithDuration:2.0 animations:^ {
-        self.img.alpha = 1.0;
+    
+    
+    [UIImageView animateWithDuration:2.0 animations:^ {
+        //self.img.alpha = 1.0;
         self.img.frame = novoFrame;
-//                   self.view.transform = CGAffineTransformMakeRotation(M_PI);
-//         
-         self.view.transform = CGAffineTransformMakeTranslation(50, 50);
+        self.view.transform = CGAffineTransformMakeTranslation(25, 25);
     }
      ];
+    
+    //toolbar
     
     UIToolbar *toolbarDict = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 480, self.view.bounds.size.width, 30)];
     [self.view addSubview:toolbarDict];
     
     UIBarButtonItem *buttonToolbar = [[UIBarButtonItem alloc]initWithTitle:@"Editar" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
+    
+    //centraliza o botao na toolbar
+    
     UIBarButtonItem *space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     NSArray *itenstAB = [[NSArray alloc ]initWithObjects:space, buttonToolbar, space, nil];
     [toolbarDict setItems:itenstAB];
+    
+    
+    //zoom
+    
+    UILongPressGestureRecognizer *zoom = [[UILongPressGestureRecognizer alloc]initWithTarget:self action: @selector(zoomImg:)];
+    zoom.minimumPressDuration = 0.5;
+    [img addGestureRecognizer:zoom];
+    
+    
+    
+    //gestos
+    
+    UIPanGestureRecognizer *mover = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(moverImg:)];
+    [img addGestureRecognizer:mover];
+
+    
 }
 
 
@@ -77,12 +99,15 @@
     labelPalavras.text = [d seePalavra:cont];
     
     if (!img) {
-        img = [[UIImageView alloc]initWithFrame:CGRectMake(10, 150, 300, 200)];
+        img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 150, 300, 200)];
         [self.view addSubview: img];
     }
     
     UIImage *temp = [UIImage imageNamed:[d seeImagem:cont]];
     img.image = temp;
+    img.userInteractionEnabled = YES;
+    
+    
 }
 
 -(void) edit: (id) sender {
@@ -95,7 +120,20 @@
     
     
 }
-//
+
+
+-(void) zoomImg: (UILongPressGestureRecognizer *) sender
+{
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [UIView animateWithDuration:0.3 animations:^ { img.transform = CGAffineTransformMakeScale(3.2f, 3.2f);}];
+    }
+    
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [UIView animateWithDuration:0.3 animations:^ { img.transform = CGAffineTransformMakeScale(1.f, 1.f);}];
+    }
+}
+
+
 //-(void)viewWillAppear:(BOOL)animated{
 //
 ////    self.title = [d seeTitle:cont];
@@ -110,7 +148,7 @@
     
     DicionarioViewController *newViewContreller = [[DicionarioViewController alloc]init];
     [self.navigationController pushViewController:newViewContreller animated:YES];
-  //  [newViewContreller release];
+ 
     
     NSMutableArray *vct = [NSMutableArray arrayWithArray:[self.navigationController childViewControllers]];
     [vct removeObject:self];
@@ -146,30 +184,18 @@
 
   //  [self carregarDados];
 }
-//
-//-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-//    self =[super initWithNibName:nil bundle:nil];
-//    
-//    if (self) {
-//        UITabBarItem *tabBarIt = [self tabBarItem];
-//        
-//        [tabBarIt setTitle:@"Dicionario"];
-//    }
-//    
-//    return self;
-//}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-//   
-//    //alfabeto = [[NSArray alloc]init];
-//    
-    //dicionario = [[NSArray alloc]init];
-    
-   // for (int i = 0; letrasAlfabeto count; i++) {
-   //  DicionarioViewController
-    
+}
+
+
+-(void) moverImg: (UIPanGestureRecognizer *)m {
+    CGPoint posic = [m translationInView:self.view];
+    m.view.center = CGPointMake(m.view.center.x+ posic.x, m.view.center.y + posic.y);
+    [m setTranslation:CGPointMake(0, 0) inView:[self view]];
+    }
 
 
 /*
@@ -182,6 +208,6 @@
 }
 */
     
-}
+
 
 @end
