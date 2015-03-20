@@ -45,29 +45,34 @@
     
     [self carregarDados];
     
+    
+    //desabilita label caso o botao de edit nao seja selecionado
     labelPalavras.enabled = NO;
     
-    CGRect novoFrame = CGRectMake(176.0, 258.0, 72.0, 96.0);
+    //animacao
     
-    
+    CGRect novoFrame = CGRectMake(0, 150, self.view.bounds.size.width, self.view.bounds.size.height-300);
     [UIImageView animateWithDuration:2.0 animations:^ {
-        //self.img.alpha = 1.0;
         self.img.frame = novoFrame;
-        self.view.transform = CGAffineTransformMakeTranslation(25, 25);
-    }
-     ];
+        }];
     
     //toolbar
     
     UIToolbar *toolbarDict = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 480, self.view.bounds.size.width, 30)];
     [self.view addSubview:toolbarDict];
     
+    
+    //cria botoes da toolbar
+    
     UIBarButtonItem *buttonToolbar = [[UIBarButtonItem alloc]initWithTitle:@"Editar" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
+    UIBarButtonItem *buttonImg = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(editImg:)];
+    UIBarButtonItem *buttonChangeImg = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(changeImg:)];
+    
     
     //centraliza o botao na toolbar
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    NSArray *itenstAB = [[NSArray alloc ]initWithObjects:space, buttonToolbar, space, nil];
+    NSArray *itenstAB = [[NSArray alloc ]initWithObjects:space, buttonToolbar, buttonImg , buttonChangeImg ,space, nil];
     [toolbarDict setItems:itenstAB];
     
     
@@ -78,13 +83,16 @@
     [img addGestureRecognizer:zoom];
     
     
-    
     //gestos
     
     UIPanGestureRecognizer *mover = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(moverImg:)];
     [img addGestureRecognizer:mover];
 
+   
+    //pinch
     
+    UIPinchGestureRecognizer *pinchI = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(pinch:)];
+    [img addGestureRecognizer:pinchI];
 }
 
 
@@ -197,6 +205,35 @@
     [m setTranslation:CGPointMake(0, 0) inView:[self view]];
     }
 
+
+-(void)editImg: (id) sender {
+    UIImagePickerController *cam = [[UIImagePickerController alloc]init];
+    cam.delegate = self;
+    cam.allowsEditing = YES;
+    cam.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:cam animated:YES completion:nil];
+}
+
+-(void)changeImg: (id) sender {
+    UIImagePickerController *im = [[UIImagePickerController alloc]init];
+    im.delegate = self;
+    im.allowsEditing = YES;
+    im.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:im animated:YES completion:nil];
+}
+
+-(void) imagePickerController: (UIImagePickerController*) cam didFinishPickingMediaWithInfo: (NSDictionary *) info {
+    UIImage *cImage = info [UIImagePickerControllerEditedImage];
+    self.img.image = cImage;
+    [cam dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void) pinch: (UIPinchGestureRecognizer *) sender {
+    if ([sender scale] > 0.4 && [sender scale] <0.9) {
+        CGAffineTransform zoomp = CGAffineTransformMakeScale( [sender scale], [sender scale]);
+        [[sender view] setTransform:zoomp];
+    }
+}
 
 /*
 #pragma mark - Navigation
