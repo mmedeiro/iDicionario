@@ -21,31 +21,18 @@
 
 @implementation TableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     dc = [[Dicionario alloc]init];
     [dc dict];
-    
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+ 
+    //define o tamanho da tableView
+    self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 50, 0);
+    self.tableView.rowHeight= 50;
 
-//-(id) initWithNibName:(NSString *)nibName bundle:(NSBundle *)Bundle {
-//    self = [self initWithNibName:nil bundle:nil];
-//    
-//    if (self) {
-//        UITabBarItem *tabBarIt = [self tabBarItem];
-//        
-//        [tabBarIt setTitle:@"Lista"];
-//    }
-//    return self;
-//}
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

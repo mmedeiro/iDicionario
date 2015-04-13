@@ -7,7 +7,6 @@
 //
 
 #import "MackenzieAppDelegate.h"
-#import "LetraAViewController.h"
 #import "DicionarioViewController.h"
 #import "Dicionario.h"
 #import "TableViewController.h"
@@ -19,7 +18,7 @@
     DicionarioViewController *viewController = [[DicionarioViewController alloc]initWithNibName:nil bundle:nil];
     
     TableViewController *tableView = [[TableViewController alloc]init];
-    
+        
     UITabBarController *tabBarController = [[UITabBarController alloc]init];
     
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];

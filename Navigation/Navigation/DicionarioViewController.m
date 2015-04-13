@@ -25,7 +25,7 @@
     d = [[Dicionario alloc]init];
     [d dict];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor purpleColor]];
     
     //next
     
@@ -42,6 +42,7 @@
     UIBarButtonItem *back = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(back:)];
     self.navigationItem.leftBarButtonItem=back;
     
+    //chama o metodo
     
     [self carregarDados];
     
@@ -72,7 +73,7 @@
     //centraliza o botao na toolbar
     
     UIBarButtonItem *space = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    NSArray *itenstAB = [[NSArray alloc ]initWithObjects:space, buttonToolbar, buttonImg , buttonChangeImg ,space, nil];
+    NSArray *itenstAB = [[NSArray alloc ]initWithObjects:space, buttonToolbar,space, buttonImg ,space, buttonChangeImg ,space, nil];
     [toolbarDict setItems:itenstAB];
     
     
@@ -101,7 +102,7 @@
     self.navigationItem.title = [d seeTitle:cont];
     
     if (!labelPalavras) {
-        labelPalavras = [[UITextField alloc]initWithFrame:CGRectMake(120, 65, 170, 25)];
+        labelPalavras = [[UITextField alloc]initWithFrame:CGRectMake(300, 400, 300, 80)];
         [self.view addSubview:labelPalavras];
     }
     labelPalavras.text = [d seePalavra:cont];
@@ -119,13 +120,14 @@
 }
 
 -(void) edit: (id) sender {
-    
-    labelPalavras.enabled = YES;
-//    labelPalavras.backgroundColor = [UIColor grayColor];
-//    labelPalavras.backgroundColor = [UIColor clearColor];
-    
- 
-    
+    if (labelPalavras.enabled == YES) {
+        labelPalavras.enabled = NO;
+        labelPalavras.backgroundColor =  [UIColor clearColor];
+    }
+    else
+        labelPalavras.enabled = YES;
+        labelPalavras.backgroundColor = [UIColor whiteColor];
+  
     
 }
 
@@ -141,15 +143,6 @@
     }
 }
 
-
-//-(void)viewWillAppear:(BOOL)animated{
-//
-////    self.title = [d seeTitle:cont];
-////    labelPalavras.text = [d seePalavra:cont];
-////    UIImage *temp = [UIImage imageNamed:[d seeImagem:cont]];
-////    img.image = temp;
-//    
-//}
 
 -(void)next:(id)sender {
     //cont ++;
@@ -234,17 +227,6 @@
         [[sender view] setTransform:zoomp];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-    
 
 
 @end
