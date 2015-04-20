@@ -102,7 +102,7 @@
     self.navigationItem.title = [d seeTitle:cont];
     
     if (!labelPalavras) {
-        labelPalavras = [[UITextField alloc]initWithFrame:CGRectMake(300, 400, 300, 80)];
+        labelPalavras = [[UITextField alloc]initWithFrame:CGRectMake(100, 400, 300, 80)];
         [self.view addSubview:labelPalavras];
     }
     labelPalavras.text = [d seePalavra:cont];
@@ -123,12 +123,17 @@
     if (labelPalavras.enabled == YES) {
         labelPalavras.enabled = NO;
         labelPalavras.backgroundColor =  [UIColor clearColor];
+        [labelPalavras setUserInteractionEnabled:YES];
+        [labelPalavras becomeFirstResponder];
+        
+       
     }
     else
         labelPalavras.enabled = YES;
+        [labelPalavras endEditing:YES];
+        //[labelPalavras setUserInteractionEnabled:NO];
+        [labelPalavras becomeFirstResponder];
         labelPalavras.backgroundColor = [UIColor whiteColor];
-  
-    
 }
 
 
@@ -145,8 +150,7 @@
 
 
 -(void)next:(id)sender {
-    //cont ++;
-    
+
     DicionarioViewController *newViewContreller = [[DicionarioViewController alloc]init];
     [self.navigationController pushViewController:newViewContreller animated:YES];
  
@@ -166,8 +170,7 @@
 }
 
 -(void)back:(id)sender{
-   // cont --;
-    
+
     DicionarioViewController *newViewContreller = [[DicionarioViewController alloc]init];
     [self.navigationController pushViewController:newViewContreller animated:YES];
  
@@ -182,8 +185,6 @@
     newViewContreller.labelPalavras.text = [d seePalavra:cont];
     newViewContreller.img.image = [d seeImagem:cont];
 
-
-  //  [self carregarDados];
 }
 
 
